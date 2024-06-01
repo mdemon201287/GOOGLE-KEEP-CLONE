@@ -1,0 +1,11 @@
+/* Add this CSS to your styles file */
+
+input[type="text"] {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+  }
+  
