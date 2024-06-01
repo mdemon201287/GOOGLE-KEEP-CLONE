@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 interface AddNoteProps {
   addNote: (note: { id?: number; title: string; body: string }) => void;
-  editingNote?: { id: number; title: string; body: string };
+  editingNote?: { id: number; title: string; body: string } | null;
   onCancelEdit?: () => void;
 }
 

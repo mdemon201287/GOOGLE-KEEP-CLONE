@@ -10,6 +10,8 @@ interface Note {
   done: boolean;
 }
 
+
+
 const NoteList: React.FC = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [doneNotes, setDoneNotes] = useState<Note[]>([]);
