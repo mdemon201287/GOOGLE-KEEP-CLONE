@@ -1,4 +1,6 @@
+// components/AddNote.tsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface AddNoteProps {
   addNote: (note: { id?: number; title: string; body: string }) => void;
@@ -9,6 +11,7 @@ interface AddNoteProps {
 const AddNote: React.FC<AddNoteProps> = ({ addNote, editingNote, onCancelEdit }) => {
   const [title, setTitle] = useState(editingNote?.title || '');
   const [body, setBody] = useState(editingNote?.body || '');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (editingNote) {
@@ -26,6 +29,7 @@ const AddNote: React.FC<AddNoteProps> = ({ addNote, editingNote, onCancelEdit })
       });
       setTitle('');
       setBody('');
+      navigate('/');
     }
   };
 

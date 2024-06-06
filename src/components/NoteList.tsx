@@ -1,4 +1,6 @@
+// components/NoteList.tsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
 import { getNotes } from '../api';
@@ -10,14 +12,13 @@ interface Note {
   done: boolean;
 }
 
-
-
 const NoteList: React.FC = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [doneNotes, setDoneNotes] = useState<Note[]>([]);
   const [deletedNotes, setDeletedNotes] = useState<Note[]>([]);
   const [editingNote, setEditingNote] = useState<Note | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -38,8 +39,8 @@ const NoteList: React.FC = () => {
       setEditingNote(null);
     } else {
       setNotes([
-        ...notes,
         { ...note, id: notes.length + 1, done: false },
+        ...notes, 
       ]);
     }
   };
@@ -55,6 +56,7 @@ const NoteList: React.FC = () => {
 
   const editNote = (note: Note) => {
     setEditingNote(note);
+    navigate('/add');
   };
 
   const toggleDone = (id: number) => {
